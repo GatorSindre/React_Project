@@ -16,7 +16,7 @@ export default function AnimalCard({
             border: '1px solid #ddd',
             borderRadius: 12,
             padding: 16,
-            maxWidth: 350,
+            width: 300,
             boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
         }}>
             <h2 style={{ marginTop: 0}}>{name}</h2>
@@ -28,7 +28,9 @@ export default function AnimalCard({
                         width: '100%',
                         borderRadius: 8,
                         display: 'block',
-                        marginBottom: 12
+                        marginBottom: 12,
+                        objectFit: "cover",
+                        height: 300
                     }}
                 />
             )}

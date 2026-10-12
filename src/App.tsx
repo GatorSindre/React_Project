@@ -6,13 +6,28 @@ import Header from "./Header"
 import AnimalCard from "./AnimalCard"
 import Footer from "./Footer"
 
+import { useState } from "react"
+
 const dato = new Date().toLocaleDateString('nb-NO');
 
 export default function App() {
-  return (
-    <main style={{  padding: 20,  fontFamily:'Arial, sans-serif' }}>
 
+  const [showAnimals, setShowAnimals] = useState(false);
+
+  return (
+    <main style={{  
+      padding: 0, 
+      paddingBottom: 0,
+      marginBottom: 0,  
+      fontFamily:'Arial, sans-serif' 
+      }}>
       <Header></Header>
+
+      <button onClick={() => setShowAnimals(!showAnimals)} style={{
+        marginBottom: 40
+      }}>
+        {showAnimals ? "Skjul" : "Vis"}
+      </button>
 
       <div style={{ display: "flex", justifyContent: "center", gap: 50 }}>
       <AnimalCard
@@ -28,7 +43,7 @@ export default function App() {
         fakta={['Kan stupe i over 300 km/t', 'Spiser småfugler']}
       />
       <AnimalCard
-        name="The Airbus Beluga Airplane"
+        name="The Airbus"
         description="Flyr"
         image={airbus}
         fakta={['Transporterer andre flydeler', 'Har et unikt utsende']}
