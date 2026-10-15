@@ -109,3 +109,27 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.knapp {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 10px, 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.knapp:hover {
+  background: #1d4ed8;
+}
+
+.white_filter {
+    filter: brightness(0) invert(1);
+}
+
+.vertikalSeksjon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
