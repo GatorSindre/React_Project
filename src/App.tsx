@@ -1,6 +1,7 @@
 import dog from "./assets/dog.jpg"
 import falcon from "./assets/falcon.jpg"
 import airbus from "./assets/airbus.jpg"
+import horse from "./assets/horse.jpg"
 import like from "./assets/like.png"
 
 import Header from "./Header"
@@ -19,6 +20,8 @@ export default function App() {
   const [falkLikes, setFalkLikes] = useState(0);
   const [airbusLikes, setAirbusLikes] = useState(0);
 
+  const [search, setSearch] = useState("");
+
   const animal = [
     { id: 1, name: "Hund", description: "Hunder er bra", 
       fakta: ["Lever vanligvis er 10-13 år", "Spiser hundemat"],
@@ -29,8 +32,12 @@ export default function App() {
       category: "rovdyr", image: falcon
     },
     { id: 3, name: "Airbus", description: "Flyr", 
-      fakta: ["Transporterer andre flydeler", "Har et unikt utseende"],
+      fakta: ["Transporterer flydeler", "Unikt utseende"],
       category: "livløs", image: airbus
+    },
+    { id: 4, name: "Horse", description: "Yeehaw", 
+      fakta: ["Puster ikke gjennom munnen", "Sover stående"],
+      category: "husdyr", image: horse
     }
   ]
 
@@ -43,10 +50,24 @@ export default function App() {
       }}>
       <Header></Header>
 
+      <input 
+        type="text" 
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Søk etter dyr..."
+        style={{
+          padding: 8,
+          fontSize: 16,
+          width: '100%',
+          maxWidth: 420,
+          boxSizing: "border-box",
+        }}
+      />
+
       <button className="knapp" onClick={() => {
         setShowAnimals(!showAnimals);
       }} style={{
-        marginBottom: 40,
+        marginBottom: 50,
         width: 60
       }}>
         {showAnimals ? "Skjul" : "Vis"}
@@ -55,7 +76,11 @@ export default function App() {
       {showAnimals && (
         <div style={{ 
           display: "flex", 
+          flexDirection: "row",
+          flexWrap: "wrap",
           justifyContent: "center", 
+          maxWidth: 1200,
+          margin: "0 auto",
           gap: 50, 
           }}>
             
@@ -64,6 +89,7 @@ export default function App() {
                 key={animal.id}
                 name={animal.name}
                 description={animal.description}
+                fakta={animal.fakta}
                 image={animal.image}
               />
             ))}
