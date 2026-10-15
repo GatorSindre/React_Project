@@ -2,7 +2,6 @@ import dog from "./assets/dog.jpg"
 import falcon from "./assets/falcon.jpg"
 import airbus from "./assets/airbus.jpg"
 import horse from "./assets/horse.jpg"
-import like from "./assets/like.png"
 
 import Header from "./Header"
 import AnimalCard from "./AnimalCard"
@@ -15,12 +14,6 @@ const dato = new Date().toLocaleDateString('nb-NO');
 export default function App() {
 
   const [showAnimals, setShowAnimals] = useState(true);
-
-  const [hundLikes, setHundLikes] = useState(0);
-  const [falkLikes, setFalkLikes] = useState(0);
-  const [airbusLikes, setAirbusLikes] = useState(0);
-
-  const [search, setSearch] = useState("");
 
   const animal = [
     { id: 1, name: "Hund", description: "Hunder er bra", 
@@ -40,6 +33,13 @@ export default function App() {
       category: "husdyr", image: horse
     }
   ]
+
+  const [search, setSearch] = useState("");
+
+  const visibleAnimals = animal.filter((animal) =>
+  animal.name.toLowerCase().includes(search.toLowerCase())
+  );
+
 
   return (
     <main style={{  
@@ -84,7 +84,7 @@ export default function App() {
           gap: 50, 
           }}>
             
-            {animal.map((animal) => (
+            {visibleAnimals.map((animal) => (
               <AnimalCard
                 key={animal.id}
                 name={animal.name}
