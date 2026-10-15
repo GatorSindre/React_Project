@@ -2,6 +2,7 @@ import dog from "./assets/dog.jpg"
 import falcon from "./assets/falcon.jpg"
 import airbus from "./assets/airbus.jpg"
 import horse from "./assets/horse.jpg"
+import monkey from "./assets/monkey.jpg"
 
 import Header from "./Header"
 import AnimalCard from "./AnimalCard"
@@ -31,7 +32,12 @@ export default function App() {
     { id: 4, name: "Horse", description: "Yeehaw", 
       fakta: ["Puster ikke gjennom munnen", "Sover stående"],
       category: "husdyr", image: horse
+    },
+    { id: 5, name: "Monkey", description: "Oo oo aa aa", 
+      fakta: ["Banan", "Ape"],
+      category: "", image: monkey
     }
+
   ]
 
   const [search, setSearch] = useState("");
@@ -63,6 +69,8 @@ export default function App() {
           boxSizing: "border-box",
         }}
       />
+
+      <p>Viser {visibleAnimals.length} av {animal.length}</p>
 
       <button className="knapp" onClick={() => {
         setShowAnimals(!showAnimals);
